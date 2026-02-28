@@ -6,13 +6,7 @@ pipeline {
         VERSION = "${BUILD_NUMBER}"
     }
 
-    stages {
-
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/RahulAkuthota/Kubernetes.git'
-            }
-        }
+    
 
         stage('Build Docker Image') {
             steps {
