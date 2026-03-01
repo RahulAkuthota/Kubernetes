@@ -28,14 +28,14 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh """
-                    minikube kubectl -- set image deployment/my-k8s-app \
-                    my-k8s-app=${DOCKER_IMAGE}:${VERSION}
-                """
-            }
-        }
+stage('Deploy to Kubernetes') {
+    steps {
+        sh """
+            export KUBECONFIG=/var/lib/jenkins/.kube/config
+            kubectl set image deployment/my-k8s-app \
+            my-k8s-app=${DOCKER_IMAGE}:${VERSION}
+        """
+    }
+}
     }
 }
