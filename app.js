@@ -8,7 +8,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/add", (req, res) => {
-  res.json({ sum: add(2, 3) });
+  const result = add(2, 3);
+  res.send("Sum is: " + result);
 });
 
 app.listen(3000, () => {
